@@ -1,12 +1,12 @@
-const BACKGROUND_COLOUR = '#E0FFFF';
-const SNAKE_COLOUR = '#00008B';
-const FOOD_COLOUR = '#7FFFD4';
+const BACKGROUND_COLOUR = '#333333';
+const SNAKE_COLOUR = '#267fd9';
+const FOOD_COLOUR = '#dddddd';
 
 const canvas = document.getElementById('canvas');
 const context = canvas.getContext('2d');
 canvas.width = canvas.height = 400;
 
-const FRAME_RATE = 10;
+const FRAME_RATE = 15;
 const SCREEN_SIZE = 20;
 const TILE_SIZE = (canvas.width / SCREEN_SIZE);
 
@@ -45,15 +45,19 @@ document.addEventListener('keydown', keyDown);
 function keyDown(e) {
     switch (e.keyCode) {
         case 37: { // left
+            if (velocity.x === 1) break;
             return velocity = {x: -1, y: 0};
         }
         case 38: { // up
+            if (velocity.y === 1) break;
             return velocity = {x: 0, y: -1};
         }
         case 39: { // right
+            if (velocity.x === -1) break;
             return velocity = {x: 1, y: 0};
         }
         case 40: { // down
+            if (velocity.y === -1) break;
             return velocity = {x: 0, y: 1};
         }
     }
